@@ -1,20 +1,14 @@
 "use strict";
 
-function DueDateCalculator () {}
+var DueDate = require("./DueDate.js");
+
+function DueDateCalculator () {
+    this.dueDate = null;
+}
 
 DueDateCalculator.prototype = {
     calculateDueDate : function (problemDateParameters) {
-        if (!this._isWorkingHours(problemDateParameters.submitDate))
-            throw new Error('Invalid submit date!');
-
-        if (!this._isWorkingDay(problemDateParameters.submitDate))
-            throw new Error('Invalid submit date!');
-    },
-    _isWorkingHours: function (submitDate) {
-        return (submitDate.getHours() > 8) && (submitDate.getHours() < 17);
-    },
-    _isWorkingDay: function (submitDate) {
-        return (submitDate.getDay() > 0) && (submitDate.getDay() < 6);
+        this.dueDate = DueDate.fromSubmitDate(problemDateParameters);
     }
 };
 
