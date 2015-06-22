@@ -6,10 +6,11 @@ function DueDate (date) {
 }
 
 DueDate.fromSubmitDate = function (submitDate) {
-    return new DueDate (new Date(submitDate.toString()));
+    return new DueDate (submitDate);
 };
 
 DueDate .prototype = {
+    get getDate() { return this.date; },
     _validateSubmitDate: function (submitDate) {
         if (!this._isWorkingHours(submitDate.getHours()) || !this._isWorkingDay(submitDate.getDay()))
             throw new Error('Invalid submit date!');

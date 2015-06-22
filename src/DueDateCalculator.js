@@ -8,7 +8,8 @@ function DueDateCalculator () {
 
 DueDateCalculator.prototype = {
     calculateDueDate : function (problemDateParameters) {
-        this.dueDate = DueDate.fromSubmitDate(problemDateParameters);
+        this.dueDate = DueDate.fromSubmitDate(problemDateParameters.submitDate);
+        return this.dueDate.getDate;
     }
 };
 
