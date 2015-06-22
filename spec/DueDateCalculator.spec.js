@@ -19,7 +19,7 @@ describe("DueDateCalculator", function () {
             })).to.throw('Invalid submit date!');
         });
 
-        it("should throw an exception when not working hours given", function () {
+        it("should throw an exception when not working day given", function () {
             expect(dueDateCalculator.calculateDueDate.bind(dueDateCalculator, {
                 submitDate: new Date('June 27, 2015 09:00:00')
             })).to.throw('Invalid submit date!');
@@ -38,6 +38,13 @@ describe("DueDateCalculator", function () {
                 submitDate: new Date('June 22, 2015 09:00:00'),
                 turnaroundHours: 7
             })).to.be.eql(new Date('June 22, 2015 16:00:00'));
+        });
+
+        it("should return due date and time when submit date and time with greater than 8 turnaround hours given", function () {
+            expect(dueDateCalculator.calculateDueDate({
+                submitDate: new Date('June 22, 2015 09:00:00'),
+                turnaroundHours: 11
+            })).to.be.eql(new Date('June 23, 2015 12:00:00'));
         });
 
     });
