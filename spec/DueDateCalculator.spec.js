@@ -33,6 +33,13 @@ describe("DueDateCalculator", function () {
             })).to.be.eql(actualDate);
         });
 
+        it("should return the actual date and due time when submit date with 9AM time and lesser than 8 turnaround hours given", function () {
+            expect(dueDateCalculator.calculateDueDate({
+                submitDate: new Date('June 22, 2015 09:00:00'),
+                turnaroundHours: 7
+            })).to.be.eql(new Date('June 22, 2015 16:00:00'));
+        });
+
     });
 
 });
