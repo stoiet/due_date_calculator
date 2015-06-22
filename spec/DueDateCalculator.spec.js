@@ -47,6 +47,13 @@ describe("DueDateCalculator", function () {
             })).to.be.eql(new Date('June 23, 2015 12:00:00'));
         });
 
+        it("should return the next working day when submit date is Friday and 8 turnaround hours given", function () {
+            expect(dueDateCalculator.calculateDueDate({
+                submitDate: new Date('June 26, 2015 09:00:00'),
+                turnaroundHours: 8
+            })).to.be.eql(new Date('June 29, 2015 09:00:00'));
+        });
+
     });
 
 });
